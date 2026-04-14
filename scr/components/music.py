@@ -1,25 +1,26 @@
-import glob
 import os
+import sys
+import glob
 import random
 import pygame
 
-
 def get_random_music():
-    """
-    获取 assets/sounds 目录下的随机 mp3 文件路径
-    """
-    # 获取当前脚本所在的目录 (scr/components/)
-    current_dir = os.path.dirname(os.path.abspath(__file__))
+    """获取assets/sounds目录下的随机mp3文件路径"""
 
-    # 向上两级找到项目根目录，然后进入 assets/sounds
+    # 判断是否是打包后的环境
+    if getattr(sys, 'frozen', False):
+        # 打包后的路径
+        base_path = sys._MEIPASS
+    else:
+        # 开发时的路径：从当前文件向上两级到项目根目录
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        base_path = os.path.dirname(os.path.dirname(current_dir))  # 向上两级
 
-    project_root = os.path.join(current_dir, '..', '..')
-    sound_dir = os.path.join(project_root, 'assets', 'sounds')
-
-    # 规范化路径
+    # 构建 sounds 目录路径
+    sound_dir = os.path.join(base_path, 'assets', 'sounds')
     sound_dir = os.path.normpath(sound_dir)
 
-    # 获取所有 mp3 文件
+    # 获取所有mp3文件
     mp3_files = glob.glob(os.path.join(sound_dir, '*.mp3'))
 
     if not mp3_files:

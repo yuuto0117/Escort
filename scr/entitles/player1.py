@@ -445,7 +445,7 @@ class DeathState(State):
     def __init__(self, player, facing):
         super().__init__(player, facing)
 
-        self.image = pygame.image.load('assets/images/Player/P1/ DIE.png').convert_alpha()
+        self.image = pygame.image.load('assets/images/Player/P1/DIE.png').convert_alpha()
         self.animation = animation.Animation(None, self.image, 10, self.facing, loop=False)
 
     def handle_input(self, keys):

@@ -22,6 +22,12 @@ window_height = screen_height - taskbar_height - titlebar_height
 # 创建窗口
 SCREEN = pygame.display.set_mode((2560, 1600), pygame.FULLSCREEN)
 # (2560, 1600), pygame.FULLSCREEN       (window_width, window_height), pygame.RESIZABLE
+
+# 窗口标题
+pygame.display.set_caption('Escort Demo')
+# 图标
+icon = pygame.image.load('./assets/images/ico.png')
+pygame.display.set_icon(icon)
 # ==========================帧率==========================
 
 FPS = 60
