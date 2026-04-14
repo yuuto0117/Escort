@@ -22,6 +22,9 @@ class Strike(pygame.sprite.Sprite):
         # 记录是否击中敌人
         self.hit_enemy = set()
 
+        # 像素碰撞mask
+        self.mask = None
+
 
     def register_hit(self, enemy):
         '''
@@ -52,6 +55,10 @@ class Strike(pygame.sprite.Sprite):
         self.animation.update()
         # 同步图像
         self.image = self.animation.IMAGE
+
+        # 创建像素碰撞mask
+        self.mask = pygame.mask.from_surface(self.image)
+
         # 动画结束从组中删除自己
         if self.animation.finished:
             self.kill()

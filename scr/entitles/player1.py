@@ -48,7 +48,7 @@ class Player1(pygame.sprite.Sprite):
         super().__init__()
 
         # 加载图片、初始状态
-        self.image = pygame.image.load('assets/images/Player/STAND.png').convert_alpha()
+        self.image = pygame.image.load('assets/images/Player/P1/STAND.png').convert_alpha()
         # 获取位置
         self.rect = self.image.get_rect()       # midbottom=(x, y)
         self.rect.x = x
@@ -278,7 +278,7 @@ class IdleState(State):
     def __init__(self, player,  facing):
         super().__init__(player, facing)
 
-        self.image = pygame.image.load('assets/images/Player/IDLE.png').convert_alpha()
+        self.image = pygame.image.load('assets/images/Player/P1/IDLE.png').convert_alpha()
         self.animation = animation.Animation(None, self.image, 8, self.facing)
 
 
@@ -291,7 +291,7 @@ class WalkState(State):
     def __init__(self, player, facing):
         super().__init__(player, facing)
 
-        self.image = pygame.image.load('assets/images/Player/WALK.png').convert_alpha()
+        self.image = pygame.image.load('assets/images/Player/P1/WALK.png').convert_alpha()
         self.animation = animation.Animation(None, self.image, 8, self.facing)
 
 
@@ -304,7 +304,7 @@ class JumpState(State):
     def __init__(self, player, facing):
         super().__init__(player, facing)
 
-        self.image = pygame.image.load('assets/images/Player/JUMP.png').convert_alpha()
+        self.image = pygame.image.load('assets/images/Player/P1/JUMP.png').convert_alpha()
         self.animation = animation.Animation(None, self.image, 2, self.facing)
 
 
@@ -324,7 +324,7 @@ class RunState(State):
     def __init__(self, player, facing):
         super().__init__(player, facing)
 
-        self.image = pygame.image.load('assets/images/Player/RUN.png').convert_alpha()
+        self.image = pygame.image.load('assets/images/Player/P1/RUN.png').convert_alpha()
         self.animation = animation.Animation(None, self.image, 6, self.facing)
 
 
@@ -337,7 +337,7 @@ class Attack1State(State):
     def __init__(self, player, facing):
         super().__init__(player, facing)
 
-        self.image = pygame.image.load('assets/images/Player/ATTACK1.png').convert_alpha()
+        self.image = pygame.image.load('assets/images/Player/P1/ATTACK1.png').convert_alpha()
         self.animation = animation.Animation(None, self.image, 5, self.facing, loop=False)
 
 
@@ -354,7 +354,7 @@ class Attack2State(State):
     def __init__(self, player, facing):
         super().__init__(player, facing)
 
-        self.image = pygame.image.load('assets/images/Player/ATTACK2.png').convert_alpha()
+        self.image = pygame.image.load('assets/images/Player/P1/ATTACK2.png').convert_alpha()
         self.animation = animation.Animation(None, self.image, 5, self.facing, loop=False)
 
     def handle_input(self, keys):
@@ -370,7 +370,7 @@ class DefendState(State):
     def __init__(self, player, facing):
         super().__init__(player, facing)
 
-        self.image = pygame.image.load('assets/images/Player/DEFEND.png').convert_alpha()
+        self.image = pygame.image.load('assets/images/Player/P1/DEFEND.png').convert_alpha()
         self.animation = animation.Animation(None, self.image, 1, self.facing)
 
     def update(self):
@@ -382,7 +382,7 @@ class DodgeState(State):
     def __init__(self, player, facing):
         super().__init__(player, facing)
 
-        self.image = pygame.image.load('assets/images/Player/DODGE.png').convert_alpha()
+        self.image = pygame.image.load('assets/images/Player/P1/DODGE.png').convert_alpha()
         # loop=False 确保动画只播放一次
         self.animation = animation.Animation(None, self.image, 6, self.facing, loop=False)
 
@@ -416,7 +416,7 @@ class HurtState(State):
     def __init__(self, player, facing):
         super().__init__(player, facing)
 
-        self.image = pygame.image.load('assets/images/Player/HURT.png').convert_alpha()
+        self.image = pygame.image.load('assets/images/Player/P1/HURT.png').convert_alpha()
         self.animation = animation.Animation(None, self.image, 4, self.facing, loop=False)
 
 
@@ -445,7 +445,7 @@ class DeathState(State):
     def __init__(self, player, facing):
         super().__init__(player, facing)
 
-        self.image = pygame.image.load('assets/images/Player/DIE.png').convert_alpha()
+        self.image = pygame.image.load('assets/images/Player/P1/ DIE.png').convert_alpha()
         self.animation = animation.Animation(None, self.image, 10, self.facing, loop=False)
 
     def handle_input(self, keys):

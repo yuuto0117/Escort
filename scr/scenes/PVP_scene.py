@@ -64,25 +64,56 @@ class PVPScene(Scene):
         '''
         检测玩家1挥砍与敌人碰撞
         '''
-        # 碰撞检测返回字典
-        hits = pygame.sprite.groupcollide(self.player1.strike_group, self.player2_group, False, False)
+        if self.player1.health.alive:
 
-        for strike_sprite, hit_p2_list in hits.items():
-            for p2_sprite in hit_p2_list:
-                if strike_sprite.register_hit(p2_sprite):
-                    p2_sprite.check_take_damage()
+            # 像素级检测
+            for strike1_sprite in self.player1.strike_group:
+                if not hasattr(strike1_sprite, 'mask') or strike1_sprite.mask is None:
+                    continue
+
+                for player2_sprite in self.player2_group:
+                    if not hasattr(player2_sprite, 'mask') or player2_sprite.mask is None:
+                        continue
+
+                    # 使用 collide_mask
+                    if pygame.sprite.collide_mask(strike1_sprite, player2_sprite):
+                        player2_sprite.check_take_damage()
+
+        # # 碰撞检测返回字典
+        # hits = pygame.sprite.groupcollide(self.player1.strike_group, self.player2_group, False, False)
+        #
+        # for strike_sprite, hit_p2_list in hits.items():
+        #     for p2_sprite in hit_p2_list:
+        #         if strike_sprite.register_hit(p2_sprite):
+        #             p2_sprite.check_take_damage()
 
     def P2_check_combat_collision(self):
         '''
         检测玩家2挥砍与敌人碰撞
         '''
-        # 碰撞检测返回字典
-        hits = pygame.sprite.groupcollide(self.player2.strike_group, self.player1_group, False, False)
 
-        for strike_sprite, hit_p1_list in hits.items():
-            for p1_sprite in hit_p1_list:
-                if strike_sprite.register_hit(p1_sprite):
-                    p1_sprite.check_take_damage()
+        if self.player2.health.alive:
+
+            # 像素级检测
+            for strike2_sprite in self.player2.strike_group:
+                if not hasattr(strike2_sprite, 'mask') or strike2_sprite.mask is None:
+                    continue
+
+                for player1_sprite in self.player1_group:
+                    if not hasattr(player1_sprite, 'mask') or player1_sprite.mask is None:
+                        continue
+
+                    # 使用 collide_mask
+                    if pygame.sprite.collide_mask(strike2_sprite, player1_sprite):
+                        player1_sprite.check_take_damage()
+
+        # # 碰撞检测返回字典
+        # hits = pygame.sprite.groupcollide(self.player2.strike_group, self.player1_group, False, False)
+        #
+        # for strike_sprite, hit_p1_list in hits.items():
+        #     for p1_sprite in hit_p1_list:
+        #         if strike_sprite.register_hit(p1_sprite):
+        #             p1_sprite.check_take_damage()
 
 
 

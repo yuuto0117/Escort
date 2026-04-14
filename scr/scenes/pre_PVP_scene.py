@@ -70,12 +70,12 @@ class PrePVPScene(Scene):
     def draw(self, screen):
         # 覆盖、绘制背景
         screen.fill((88, 76, 76))
-        Instructions = pygame.image.load('assets/images/screen.png')
+        Instructions = pygame.image.load('assets/images/screen2.png')
         screen.blit(Instructions, (0, 0))
 
         # 文本
         text = self.font.render('switch to English input method', True, (0, 0, 0))
-        screen.blit(text, (settings.screen_width / 5 * 3, settings.screen_height / 4 + 150))
+        screen.blit(text, (settings.screen_width / 5 * 3, settings.screen_height / 4 + 180))
 
         # 简单绘制地面
         pygame.draw.line(screen, (0, 0, 0), (0, 750), (settings.screen_width, 750))
